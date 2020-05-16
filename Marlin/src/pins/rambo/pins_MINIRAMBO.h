@@ -19,6 +19,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
+
+ /**
+  * Thanks to jwg3 for his comments on BLTouch Minirambo wiring at
+  * https://reprap.org/forum/read.php?359,822167
+  * His edits annotated as JWG
+  */
+
+
 #pragma once
 
 /**
@@ -42,8 +50,14 @@
 #define X_MAX_PIN                             30
 #define Y_MIN_PIN                             11
 #define Y_MAX_PIN                             24
-#define Z_MIN_PIN                             10
-#define Z_MAX_PIN                             23
+//#define Z_MIN_PIN                             10
+#define Z_MIN_PIN                             23  // ZMax's pin now used for ZMin. For BLTouch. - JWG
+//#define Z_MAX_PIN                             23
+#define Z_MAX_PIN                             -1  // Moving ZMax pin to Z_MIN_PIN to make ZMin available for use as PWM servo pin. No Zmax in use; only ZMin using ZMax's pin. For BLTouch. - JWG
+//
+// Faux Servo for BLTouch
+//
+#define SERVO0_PIN 10 // ZMin pin used as PWM pin for BLTouch. Only MinEndstop pins can be used for PWM. - JWG
 
 //
 // Z Probe (when not Z_MIN_PIN)
